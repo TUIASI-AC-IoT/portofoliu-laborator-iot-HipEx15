@@ -38,6 +38,13 @@ void app_main(void)
     }
     ESP_ERROR_CHECK(ret);
 
+
+    // TODO: 3. Pornire mod STA + scanare SSID-uri disponibile
+    wifi_init_sta();
+
+    // TODO: 4. Initializare mDNS (daca mai ramana timp)  
+    mdns_init();
+
     // TODO: 1. Pornire softAP
     wifi_init_softap();
 
@@ -47,12 +54,12 @@ void app_main(void)
         ESP_LOGE(TAG, "Failed to start HTTP server");
         return;
     }
-
-    // TODO: 3. Pornire mod STA + scanare SSID-uri disponibile
-
-    wifi_init_sta();
-
-    // TODO: 4. Initializare mDNS (daca mai ramana timp)    
-
-    mdns_init();
-}
+    else
+    {
+      while (1)
+      {
+        vTaskDelay(1000);
+      }
+      
+    }
+  }
