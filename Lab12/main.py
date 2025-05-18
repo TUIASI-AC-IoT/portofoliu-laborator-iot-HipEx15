@@ -52,7 +52,7 @@ def get_config(sensorId):
             return jsonify({'config': sensor['config']})
     return jsonify({'error': 'Sensor not found'}), 404
 
-# === POST: Crearea configuratie pentru senzorul cu id-ul X ===
+# === POST: Crearea configuratiei pentru senzorul cu id-ul X ===
 @app.route('/sensors/<sensorId>/config', methods=['POST'])
 def create_config(sensorId):
     for sensor in sensors:
@@ -66,7 +66,7 @@ def create_config(sensorId):
             return jsonify({'message': 'Configuration created', 'config': sensor['config']}), 201
     return jsonify({'error': 'Sensor not found'}), 404
 
-# === PUT: Reconfigurare senzorului cu id-ul X ===
+# === PUT: Reconfigurarea senzorului cu id-ul X ===
 @app.route('/sensors/<sensorId>/config', methods=['PUT'])
 def update_config(sensorId):
     for sensor in sensors:
